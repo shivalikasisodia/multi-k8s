@@ -1,4 +1,4 @@
-name: Deploy MultiK8s
+name: Deploy MultiK8s on AWS EKS
 on:
   push:
     branches:
