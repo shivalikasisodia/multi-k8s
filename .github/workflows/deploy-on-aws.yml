@@ -8,7 +8,7 @@ env:
   SHA: $(git rev-parse HEAD)
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -58,3 +58,9 @@ jobs:
           kubectl set image deployments/server-deployment server=shivisis/multi-server-k8s-gh:${{ env.SHA }}
           kubectl set image deployments/client-deployment client=shivisis/multi-client-k8s-gh:${{ env.SHA }}
           kubectl set image deployments/worker-deployment worker=shivisis/multi-worker-k8s-gh:${{ env.SHA }}
+
+      - name: get deployment
+        run: |-
+          kubectl get deployments
+          kubectl get svc
+          kubectl get ns
